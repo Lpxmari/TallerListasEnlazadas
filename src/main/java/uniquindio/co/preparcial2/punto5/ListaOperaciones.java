@@ -3,30 +3,33 @@ package uniquindio.co.preparcial2.punto5;
 public class ListaOperaciones {
 
     public static void insertarDespuesDeSuma(Nodo cabeza) {
-        insertarRecursivo(cabeza, new int[]{0});
+        int sumaTotal = calcularSuma(cabeza);
+        insertarRecursivo(cabeza, sumaTotal);
     }
 
-    // Método recursivo que hace todo en un solo recorrido
-    private static void insertarRecursivo(Nodo actual, int[] sumaTotal) {
+    private static int calcularSuma(Nodo actual) {
+        if (actual == null) return 0;
+        return actual.valor + calcularSuma(actual.siguiente);
+    }
+
+    private static void insertarRecursivo(Nodo actual, int sumaTotal) {
         if (actual == null) return;
 
-        // calcular la suma
-        sumaTotal[0] += actual.valor;
-
-        insertarRecursivo(actual.siguiente, sumaTotal);
-
-        // insertar después si cumple condición
-        if (actual.valor == sumaTotal[0]) {
+        if (actual.valor == sumaTotal) {
             Nodo nuevo = new Nodo(2);
             nuevo.siguiente = actual.siguiente;
             actual.siguiente = nuevo;
+
+            insertarRecursivo(nuevo.siguiente, sumaTotal);  
+        } else {
+            insertarRecursivo(actual.siguiente, sumaTotal);
         }
     }
 
     public static void imprimirLista(Nodo cabeza) {
         Nodo actual = cabeza;
         while (actual != null) {
-            System.out.print(actual.valor + " -> ");
+            System.out.print(Math.abs(actual.valor) + " -> ");
             actual = actual.siguiente;
         }
         System.out.println(".");

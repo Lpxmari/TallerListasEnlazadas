@@ -41,17 +41,11 @@ class ListaSimple<T> {
 class Pila<T> {
     private LinkedList<T> elementos = new LinkedList<>();
 
-    public void apilar(T elemento) {
-        elementos.addFirst(elemento);
-    }
+    public void apilar(T elemento) {elementos.addFirst(elemento);}
 
-    public T desapilar() {
-        return elementos.removeFirst();
-    }
+    public T desapilar() {return elementos.removeFirst();}
 
-    public boolean estaVacia() {
-        return elementos.isEmpty();
-    }
+    public boolean estaVacia() {return elementos.isEmpty();}
 }
 
 

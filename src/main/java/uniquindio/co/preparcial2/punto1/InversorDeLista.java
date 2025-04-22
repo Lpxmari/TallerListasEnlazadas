@@ -1,7 +1,7 @@
 package uniquindio.co.preparcial2.punto1;
 
 
-public class InversorDeLista {
+public class                                                                                                                                                                                                                                                InversorDeLista {
 
     public static <T> ListaSimple<T> invertirLista(ListaSimple<T> listaOriginal) {
         Pila<T> pila = new Pila<>();
